@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    {{post.title}}
+{% endblock %}
+
+{% block styles%}
+    <link rel="stylesheet" href="static/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="static/base.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content_title %}
+    {{post.title}}
+{% endblock %}
+
+{% block content %}
+    {{post.body}}
+    <br>
+    {% for tag in tags%}
+    <a href="{{url_for('tag_detail', slug=tag.slug)}}"
+       style="text-decoration:none; color:white;font-size: 12px; background: blue; border-radius:2px; margin-right:5px; padding:0px 4px 4px 4px; cursor: pointer;"
+    >
+            {{tag.name}}
+        </a>
+    <br>
+    {% endfor%}
+
+    {%if current_user.is_authenticated%}
+    <a href="{{url_for('edit_post', slug=post.slug)}}">Редактировать</a>
+    {%endif%}
+{% endblock %}

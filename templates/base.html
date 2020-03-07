@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        {% block title %}
+
+        {% endblock %} | Flask app
+    </title>
+    {% block styles%}
+
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container-fluid">
+            <div class="menu row">
+                <div class="col-3">
+               <ul>
+                   <li><a  class="link" href="/">Главная</a></li>
+                   {%if current_user.is_authenticated %}
+                   <li><a class="link" href="/create">Написать</a></li>
+                   {%endif%}
+                   <li><a class="link" href="">О нас</a></li>
+               </ul>
+                     </div>
+                <div class="col-3">
+                <form method="GET" action="{{url_for('index')}}">
+                    <input type="text" name="q" value="{{request.args.get('q', '')}}">
+                    <input type="submit" value="Искать">
+                </form>
+                    </div>
+                <div class="col-6">
+                    <p class="cur-user"><a class="link" href="/registration">Регистрация</a></p>
+                    {%if current_user.is_authenticated%}
+                    <p class="cur-user"><a class="link" href="/logout">Выйти</a></p>
+                    {%endif%}
+                     {%if current_user.is_authenticated == False%}
+                    <p class="cur-user"><a class="link" href="/login">Войти</a></p>
+                    {%endif%}
+                    </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="row">
+            <h1>
+                {% block content_title %}
+
+                {% endblock %}
+            </h1>
+        </div>
+         {% block content %}
+
+            {% endblock %}
+    </div>
+</body>
+</html>

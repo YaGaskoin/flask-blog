@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+
+{% block title %}
+    {{tag.name}}
+{% endblock %}
+
+{% block styles%}
+    <link rel="stylesheet" href="../static/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../static/base.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content_title %}
+    Posts with '{{tag.name}}' tag:
+{% endblock %}
+
+{% block content %}
+    {%for post in posts%}
+        <a href="{{url_for('post_detail',slug=post.slug)}}">{{post.title}}</a><br>
+    {%endfor%}
+{% endblock %}

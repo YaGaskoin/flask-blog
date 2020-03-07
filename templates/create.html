@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% block title%}
+    Создать пост
+{%endblock%}
+
+{% block styles%}
+    <link rel="stylesheet" href="../static/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../static/create.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content_title%}
+    Создать пост
+{%endblock%}
+
+{% block content%}
+   <form class="fill" action="{{url_for('create_post')}}" method="POST">
+       <label>Заголовок</label><br>
+       <input name="title"  required  value=>
+       <br>
+       <label>Содержание</label><br>
+       <textarea name="body"  required cols="50" rows="15"></textarea><br>
+       <input type="submit" value="Создать">
+   </form>
+{%endblock%}

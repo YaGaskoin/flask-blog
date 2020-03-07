@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+
+{%block title%}
+Регистрация
+
+{%endblock%}
+
+{%block styles%}
+<link rel="stylesheet" href="static/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="static/base.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+{%endblock%}
+
+{%block content_title%}
+Регистрация
+
+{%endblock%}
+
+{%block content%}
+<form method="POST" action="{{url_for('registration')}}">
+    <label>Ваш email</label>
+    <input type="text" required name="email"><br>
+    <label>Ваш пароль</label>
+    <input type="password" required name="password"><br>
+    <input type="submit" value="Зарегистрироваться">
+</form>
+
+{%endblock%}
